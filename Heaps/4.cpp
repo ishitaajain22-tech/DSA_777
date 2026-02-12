@@ -1,3 +1,5 @@
+//PROBLEM LINK: https://www.geeksforgeeks.org/problems/k-closest-elements3619/1 https://leetcode.com/problems/find-k-closest-elements/description/
+
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
