@@ -1,18 +1,22 @@
-//problem link: https://leetcode.com/problems/sort-array-by-increasing-frequency/
+//problem link: https://leetcode.com/problems/sort-characters-by-frequency/
 
 class Solution {
 public:
-    vector<int> frequencySort(vector<int>& nums) {
-        unordered_map<int,int>mp;
-        for(int num:nums){
-            mp[num]++;
+    string frequencySort(string s) {
+        unordered_map<char,int>mp;
+        for(char chr:s){
+            mp[chr]++;
         }
-        sort(nums.begin(),nums.end(),[&](int a,int b){ //repeatedly asks should n1 come before n2
-            if(mp[a] ==  mp[b]){
-                return mp[a]>mp[b];
-            }
-            return mp[a]<mp[b];
-        });
-        return nums;
+        priority_queue<pair<int,char>>pq;
+        for(auto &p:mp){
+            pq.push({p.second,p.first});
+        }
+        string res="";
+        while(!pq.empty()){
+            auto [freq,chr] = pq.top();
+            pq.pop();
+            res.append(freq,chr);
+        }
+        return res;
     }
 };
